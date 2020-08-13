@@ -4,6 +4,7 @@ export function generateGameTextures(graphics){
     generateGroundTexture(graphics)
     generateBlocksTextures(graphics)
     generateThornesTexture(graphics)
+    generateCoinsTexture(graphics)
 }
 
 export function generatePlayerTexture(graphics: Phaser.GameObjects.Graphics){
@@ -60,6 +61,17 @@ export function generateThornesTexture(graphics: Phaser.GameObjects.Graphics){
   }
     graphics.stroke()
   graphics.generateTexture('thorne', 52, 17)
+  graphics.clear()
+}
+
+export function generateCoinsTexture(graphics: Phaser.GameObjects.Graphics){
+  graphics.clear()
+  graphics.lineStyle(2, 0xCFB53B)
+  graphics.strokeCircle(16,16,2)
+  graphics.strokeCircle(16, 16, 6)
+  graphics.strokeCircle(16, 16, 10)
+  graphics.strokeCircle(16, 16, 15)
+  graphics.generateTexture('coin', 32, 32)
   graphics.clear()
 }
 
