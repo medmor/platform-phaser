@@ -54,7 +54,7 @@ export default class extends Phaser.Scene {
 
     this.cameras.main.startFollow(this.player);
 
-    //Sound.load()
+    Sound.load()
     
 
 
