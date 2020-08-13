@@ -46,6 +46,10 @@ export default class extends Phaser.Physics.Arcade.Sprite{
 
       this.setVelocityX(this.body.velocity.x * .985)
     }
+
+    if(this.y > 700){
+      this.reset()
+    }
   }
 
   reset(){
