@@ -20,8 +20,8 @@ export default class extends Phaser.Scene {
   init(){
     this.graphics = this.add.graphics()
     this.lastTime = this.time.now
-    this.cameras.main.setBounds(0, 0, 1920 * 2, 600);
-    this.physics.world.setBounds(0, 0, 1920 * 2, 600);
+    this.cameras.main.setBounds(0, 0, 1920, 600);
+    this.physics.world.setBounds(0, 0, 1920, 600);
   }
 
   preload(){

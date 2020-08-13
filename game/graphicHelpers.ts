@@ -19,9 +19,9 @@ export function generateGroundTexture(graphics: Phaser.GameObjects.Graphics){
   graphics.clear()
   graphics.lineStyle(2, 0xffffff)
   graphics.moveTo(1, 1)
-  graphics.lineTo(1920 * 2, 1)
+  graphics.lineTo(1920, 1)
   graphics.stroke()
-  graphics.generateTexture('ground', 1920 * 2 + 2, 4)
+  graphics.generateTexture('ground', 1920 + 2, 4)
   graphics.clear()
 }
 
