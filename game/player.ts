@@ -1,3 +1,5 @@
+import Sound from "./sound"
+
 export default class extends Phaser.Physics.Arcade.Sprite{
 
   startX: number;
@@ -35,6 +37,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
 
       if(inputY !== 0) {
         this.setVelocityY(inputY * deltatime)
+        Sound.jump.play()
       }
 
       this.setVelocityX(this.body.velocity.x * .89)
@@ -52,6 +55,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
 
   onThornesHit(){
     if(this.visible){
+    Sound.hit.play()
       const emit = this.emitter.createEmitter(
         {
           scale: .2,

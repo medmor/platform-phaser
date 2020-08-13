@@ -3,6 +3,7 @@ import Inputs from "./inputs"
 import Player from "./player"
 import Platforms from "./platforms"
 import Thornes from './thornes'
+import Sound from "./sound"
 
 export default class extends Phaser.Scene {
 
@@ -23,7 +24,6 @@ export default class extends Phaser.Scene {
 
   preload(){
     generateGameTextures(this.graphics)
-    this.load.audio('music', '')
   }
 
   create(){
@@ -44,7 +44,9 @@ export default class extends Phaser.Scene {
 
     this.cameras.main.startFollow(this.player);
 
-    //this.sound.play('music')
+    Sound.load()
+    
+
 
   }
 
