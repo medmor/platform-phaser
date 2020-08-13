@@ -5,6 +5,17 @@ export default class extends Phaser.Physics.Arcade.StaticGroup {
     super(world, scene)
 
     this.create(50, 400, 'coin')
+
+    const t = scene.tweens.add({
+      targets: this.getChildren(),
+      scaleX: -1, // '+=100'
+      ease: "Linear.easeInOut", // 'Cubic', 'Elastic', 'Bounce', 'Back'
+      duration: 1500,
+      repeat: -1,
+    });
+
+    
+
   }
 
 }

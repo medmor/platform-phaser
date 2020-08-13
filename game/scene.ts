@@ -41,14 +41,16 @@ export default class extends Phaser.Scene {
     this.player.initPhysics(this.physics)
 
 
-
     this.physics.add.collider(this.player, this.platforms) //platforms collision
     this.physics.add.collider(this.player, this.thornes,()=>{ //thornes collision
       this.player.onThornesHit()
     })
-    this.physics.add.overlap(this.player, this.coins, ()=>{
-      console.log(5)
-    })
+    this.physics.add.overlap(this.player, this.coins, (player, coin)=>{
+      this.tweens.add({targets: coin, y: "-=200", duration: 500, ease: 'Linear'})
+      .on('complete',()=>{
+        coin.destroy()
+        })
+    }, undefined, this)
 
     this.cameras.main.startFollow(this.player);
 

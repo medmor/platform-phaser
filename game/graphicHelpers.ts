@@ -66,12 +66,36 @@ export function generateThornesTexture(graphics: Phaser.GameObjects.Graphics){
 
 export function generateCoinsTexture(graphics: Phaser.GameObjects.Graphics){
   graphics.clear()
+  graphics.lineStyle(4, 0xCFB53B)
+  drawStar(21, 21, 5, 12, 9, graphics)
   graphics.lineStyle(2, 0xCFB53B)
-  graphics.strokeCircle(16,16,2)
-  graphics.strokeCircle(16, 16, 6)
-  graphics.strokeCircle(16, 16, 10)
-  graphics.strokeCircle(16, 16, 15)
-  graphics.generateTexture('coin', 32, 32)
+  graphics.strokeCircle(21,21,1)
+  graphics.strokeCircle(21, 21, 20)
+  graphics.save()
+  graphics.generateTexture('coin', 42, 42)
   graphics.clear()
+}
+
+function drawStar(cx, cy, spikes, outerRadius, innerRadius, graphics: Phaser.GameObjects.Graphics) {
+    var rot = Math.PI / 2 * 3;
+    var x = cx;
+    var y = cy;
+    var step = Math.PI / spikes;
+
+    graphics.moveTo(cx, cy - outerRadius)
+    for (let i = 0; i < spikes; i++) {
+        x = cx + Math.cos(rot) * outerRadius;
+        y = cy + Math.sin(rot) * outerRadius;
+        graphics.lineTo(x, y)
+        rot += step
+
+        x = cx + Math.cos(rot) * innerRadius;
+        y = cy + Math.sin(rot) * innerRadius;
+        graphics.lineTo(x, y)
+        rot += step
+    }
+    graphics.lineTo(cx, cy - outerRadius)
+    graphics.stroke();
+
 }
 
