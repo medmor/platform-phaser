@@ -48,12 +48,15 @@ export default class extends Phaser.Scene {
       this.player.onThornesHit()
     })
     this.physics.add.overlap(this.player, this.coins, (player, coin)=>{ //coin collision
-      if(coin.active) Sound.coin.play()
-      coin.active = false
-      this.tweens.add({targets: coin, y: "-=200", duration: 500, ease: 'Linear'})
-      .on('complete',()=>{
-        coin.destroy()
-        })
+      if(coin.active) {
+        Sound.coin.play()
+        coin.active = false
+        this.player.playerInventory.setCoins(1)
+        this.tweens.add({targets: coin, y: "-=200", duration: 500, ease: 'Linear'})
+        .on('complete',()=>{
+          coin.destroy()
+          })
+        }
     }, undefined, this)
 
     this.cameras.main.startFollow(this.player);
