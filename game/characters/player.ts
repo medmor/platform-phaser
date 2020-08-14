@@ -1,5 +1,7 @@
 import Sound from "../utils/sound"
 import PlayerInventory from './playerInventory'
+import UI from '../scenes/ui'
+
 
 export default class extends Phaser.Physics.Arcade.Sprite{
 
@@ -7,6 +9,9 @@ export default class extends Phaser.Physics.Arcade.Sprite{
   startY: number;
   emitter: Phaser.GameObjects.Particles.ParticleEmitterManager
   inventory : PlayerInventory
+  UILayer: UI
+
+  canDamage = true
 
   constructor(scene: Phaser.Scene, x: number, y: number, texture: string | Phaser.Textures.Texture, frame?: string | number){
     
@@ -22,6 +27,8 @@ export default class extends Phaser.Physics.Arcade.Sprite{
     this.emitter = scene.add.particles('player')
 
     this.inventory = new PlayerInventory(scene)
+    this.UILayer = <UI> scene.scene.get('ui')
+    this.UILayer.togglePlayerInventory()
   }
 
   initPhysics(physics: Phaser.Physics.Arcade.ArcadePhysics){
@@ -34,11 +41,11 @@ export default class extends Phaser.Physics.Arcade.Sprite{
   move(inputX, inputY, deltatime: number){
     
     if(this.body.touching.down){
-
       if(inputX !== 0) this.setVelocityX(inputX * deltatime )
 
       if(inputY !== 0) {
         this.setVelocityY(inputY * deltatime)
+        if(!this.canDamage)this.setVelocity(this.body.velocity.y - 200)
         Sound.jump.play()
       }
 
@@ -57,11 +64,41 @@ export default class extends Phaser.Physics.Arcade.Sprite{
   reset(){
     this.x = this.startX
     this.y = this.startY
+    this.inventory.setHealth(100)
+    this.UILayer.setHealth(100)
+    this.canDamage = true
   }
 
-  onThornesHit(){
+  onCoinTake(){
+    Sound.coin.play()
+    this.inventory.setCoins(this.inventory.coins+1)
+    this.UILayer.setCoins(this.inventory.coins.toString())
+  }
+
+  thorneDamage(){
+    if(this.canDamage){
+      Sound.hit.play()
+      this.canDamage = false
+      this.setVelocity(-200)
+      if(this.inventory.health < 11){
+        this.inventory.setHealth(0)
+        this.UILayer.setHealth(this.inventory.health)
+        this.die()
+      }else{
+        this.inventory.setHealth(this.inventory.health-10)
+        this.UILayer.setHealth(this.inventory.health)
+        setTimeout(()=>{this.canDamage = true}, 500)
+      }
+    
+    }
+  }
+
+  die(){
     if(this.visible){
-    Sound.hit.play()
+      Sound.hit.play()
+      this.visible = false
+      this.inventory.setHealth(0)
+      this.UILayer.setHealth(this.inventory.health)
       const emit = this.emitter.createEmitter(
         {
           scale: .2,
@@ -71,18 +108,17 @@ export default class extends Phaser.Physics.Arcade.Sprite{
           lifespan: 500,
           emitZone: { type: 'random', source: new Phaser.Geom.Circle(0, 0, 20) }
           })
-        setTimeout(
-          ()=> {
-            emit.stop()
-            setTimeout(()=>{
-              this.reset()
-              this.visible = true
-            },500)
-          },
-          200)
-    }
+      setTimeout(
+        ()=> {
+          emit.stop()
+          setTimeout(()=>{
+            this.reset()
+            this.visible = true
+          },500)
+        },
+        200)
 
-    this.visible = false
+    }
   }
 
 }

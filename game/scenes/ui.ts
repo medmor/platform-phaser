@@ -43,6 +43,7 @@ export default class extends Phaser.Scene {
 
   setHealth(value: number){
     this.healthText.setText(value.toString())
-    this.healthBarForground.width = (value / 100) * this.healthBarBackground.width
+    if(value <= 0) this.healthBarForground.width = 0
+    else this.healthBarForground.width = (value / 100) * this.healthBarBackground.width
   }
 }

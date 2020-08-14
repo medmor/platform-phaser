@@ -5,6 +5,7 @@ export default class extends Phaser.Physics.Arcade.StaticGroup {
     super(world, scene)
 
     this.create(700, 492, 'thorne')
+
   }
 
 }

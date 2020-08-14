@@ -9,10 +9,10 @@ export default class {
   }
 
   setCoins(value: number){
-    this.coins += value
+    this.coins = value
   }
 
   setHealth(value: number){
-    this.health += value
+    this.health = value
   }
 }
