@@ -1,14 +1,12 @@
-import { generateGameTextures } from "./graphicHelpers"
-import Player from "../player"
+import Player from "../characters/player"
 import Platforms from "../world/platforms"
 import Thornes from '../world/thornes'
 import Coins from '../world/coins'
 import Inputs from "../utils/inputs"
-import Sound from "./utils/sound"
+import Sound from "../utils/sound"
 
 export default class extends Phaser.Scene {
 
-  graphics: Phaser.GameObjects.Graphics = null
   inputs: Inputs
   player: Player
   platforms: Platforms
@@ -23,15 +21,12 @@ export default class extends Phaser.Scene {
   }
 
   init(){
-    this.graphics = this.add.graphics()
     this.lastTime = this.time.now
     this.cameras.main.setBounds(0, 0, 1920, 600);
     this.physics.world.setBounds(0, 0, 1920, 600, true, true, false, false);
   }
 
   preload(){
-    Sound.load()
-    generateGameTextures(this.graphics)
   }
 
   create(){

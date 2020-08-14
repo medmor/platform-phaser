@@ -1,4 +1,4 @@
-import Sound from "./sound"
+import Sound from "../utils/sound"
 
 export default class extends Phaser.Physics.Arcade.Sprite{
 
