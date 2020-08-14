@@ -6,6 +6,8 @@ import Inputs from "../utils/inputs"
 import Sound from "../utils/sound"
 import UI from './ui'
 
+import {onCoinTake} from './sharedFunctions'
+
 export default class extends Phaser.Scene {
 
   inputs: Inputs
@@ -27,6 +29,7 @@ export default class extends Phaser.Scene {
     this.lastTime = this.time.now
     this.cameras.main.setBounds(0, 0, 1920, 600);
     this.physics.world.setBounds(0, 0, 1920, 600, true, true, false, false);
+    this.game.scene.start('ui')
     this.UILayer = <UI> this.scene.get('ui')
     this.UILayer.togglePlayerInventory()
   }
@@ -52,7 +55,7 @@ export default class extends Phaser.Scene {
     this.physics.add.collider(this.player, this.thornes,()=>{ //thornes collision
       this.player.onThornesHit()
     })
-    this.physics.add.overlap(this.player, this.coins, this.onCoinTake, undefined, this)
+    this.physics.add.overlap(this.player, this.coins, onCoinTake.bind(this), undefined, this) //coins collision
 
     this.cameras.main.startFollow(this.player);
 
@@ -68,19 +71,6 @@ export default class extends Phaser.Scene {
 
 
     this.lastTime = this.time.now
-  }
-
-  onCoinTake(player, coin){
-    if(coin.active) {
-      coin.active = false
-      Sound.coin.play()
-      this.player.inventory.setCoins(1)
-      this.UILayer.setCoins(this.player.inventory.coins.toString())
-      this.tweens.add({targets: coin, y: "-=200", duration: 500, ease: 'Linear'})
-      .on('complete',()=>{
-        coin.destroy()
-        })
-    }
   }
 
 }

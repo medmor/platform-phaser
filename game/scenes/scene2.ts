@@ -10,7 +10,7 @@ export default class extends Phaser.Scene {
   }
 
   init(){
-    console.log('init')
+    console.log('init2')
   }
 
   preload(){
