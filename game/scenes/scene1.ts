@@ -1,10 +1,10 @@
 import { generateGameTextures } from "./graphicHelpers"
-import Inputs from "./inputs"
-import Player from "./player"
-import Platforms from "./platforms"
-import Thornes from './thornes'
-import Coins from './coins'
-import Sound from "./sound"
+import Player from "../player"
+import Platforms from "../world/platforms"
+import Thornes from '../world/thornes'
+import Coins from '../world/coins'
+import Inputs from "../utils/inputs"
+import Sound from "./utils/sound"
 
 export default class extends Phaser.Scene {
 
@@ -18,6 +18,10 @@ export default class extends Phaser.Scene {
 
   lastTime = 0
 
+  constructor(){
+    super('scene1')
+  }
+
   init(){
     this.graphics = this.add.graphics()
     this.lastTime = this.time.now
@@ -26,6 +30,7 @@ export default class extends Phaser.Scene {
   }
 
   preload(){
+    Sound.load()
     generateGameTextures(this.graphics)
   }
 
@@ -58,10 +63,6 @@ export default class extends Phaser.Scene {
 
     this.cameras.main.startFollow(this.player);
 
-    Sound.load()
-    
-
-
   }
 
   update(elapsedTime){
@@ -69,7 +70,7 @@ export default class extends Phaser.Scene {
     if(this.player.visible) this.player.move(this.inputs.horizontale(), this.inputs.verticale(), elapsedTime - this.lastTime)
 
     if(this.door.contains(this.player.x, this.player.y)){
-      console.log(0)
+      this.scene.start('scene2')
     }
 
 
