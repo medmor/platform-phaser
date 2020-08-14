@@ -4,6 +4,7 @@ import Thornes from '../world/thornes'
 import Coins from '../world/coins'
 import Inputs from "../utils/inputs"
 import Sound from "../utils/sound"
+import UI from './ui'
 
 export default class extends Phaser.Scene {
 
@@ -16,6 +17,8 @@ export default class extends Phaser.Scene {
 
   lastTime = 0
 
+  UILayer: UI
+
   constructor(){
     super('scene1')
   }
@@ -24,6 +27,8 @@ export default class extends Phaser.Scene {
     this.lastTime = this.time.now
     this.cameras.main.setBounds(0, 0, 1920, 600);
     this.physics.world.setBounds(0, 0, 1920, 600, true, true, false, false);
+    this.UILayer = <UI> this.scene.get('ui')
+    this.UILayer.togglePlayerInventory()
   }
 
   preload(){
@@ -47,24 +52,13 @@ export default class extends Phaser.Scene {
     this.physics.add.collider(this.player, this.thornes,()=>{ //thornes collision
       this.player.onThornesHit()
     })
-    this.physics.add.overlap(this.player, this.coins, (player, coin)=>{ //coin collision
-      if(coin.active) {
-        Sound.coin.play()
-        coin.active = false
-        this.player.playerInventory.setCoins(1)
-        this.tweens.add({targets: coin, y: "-=200", duration: 500, ease: 'Linear'})
-        .on('complete',()=>{
-          coin.destroy()
-          })
-        }
-    }, undefined, this)
+    this.physics.add.overlap(this.player, this.coins, this.onCoinTake, undefined, this)
 
     this.cameras.main.startFollow(this.player);
 
   }
 
   update(elapsedTime){
-
     if(this.player.visible) this.player.move(this.inputs.horizontale(), this.inputs.verticale(), elapsedTime - this.lastTime)
 
     if(this.door.contains(this.player.x, this.player.y)){
@@ -74,6 +68,19 @@ export default class extends Phaser.Scene {
 
 
     this.lastTime = this.time.now
+  }
+
+  onCoinTake(player, coin){
+    if(coin.active) {
+      coin.active = false
+      Sound.coin.play()
+      this.player.inventory.setCoins(1)
+      this.UILayer.setCoins(this.player.inventory.coins.toString())
+      this.tweens.add({targets: coin, y: "-=200", duration: 500, ease: 'Linear'})
+      .on('complete',()=>{
+        coin.destroy()
+        })
+    }
   }
 
 }
