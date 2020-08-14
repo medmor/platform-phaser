@@ -21,7 +21,7 @@ export default class SoundManager{
       
 
     this.music.on('load', ()=>{
-      this.music.play()
+      //this.music.play()
     })
   }
 }

@@ -30,7 +30,7 @@ export default class extends Phaser.Scene {
   }
 
   create(){
-
+    Sound.music.play()
     this.inputs = new Inputs(this)
 
     this.platforms = new Platforms(this.physics.world, this)

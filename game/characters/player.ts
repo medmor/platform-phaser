@@ -1,10 +1,12 @@
 import Sound from "../utils/sound"
+import PlayerInventory from './playerInventory'
 
 export default class extends Phaser.Physics.Arcade.Sprite{
 
   startX: number;
   startY: number;
   emitter: Phaser.GameObjects.Particles.ParticleEmitterManager
+  playerInventory : PlayerInventory
 
   constructor(scene: Phaser.Scene, x: number, y: number, texture: string | Phaser.Textures.Texture, frame?: string | number){
     
@@ -19,7 +21,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
 
     this.emitter = scene.add.particles('player')
 
-
+    this.playerInventory = new PlayerInventory(scene)
   }
 
   initPhysics(physics: Phaser.Physics.Arcade.ArcadePhysics){
