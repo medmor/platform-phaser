@@ -2,10 +2,11 @@
 export function generateGameTextures(graphics){
     generatePlayerTexture(graphics)
     generateGroundTexture(graphics)
-    generateBlocksTextures(graphics)
+    generateBlocksTexture(graphics)
     generateThornesTexture(graphics)
     generateCoinsTexture(graphics)
     generateDoorTexture(graphics)
+    generateBlockThornsTextures(graphics)
 }
 
 export function generatePlayerTexture(graphics: Phaser.GameObjects.Graphics){
@@ -48,7 +49,7 @@ export function generateGroundTexture(graphics: Phaser.GameObjects.Graphics){
   graphics.clear()
 }
 
-export function generateBlocksTextures(graphics: Phaser.GameObjects.Graphics){
+export function generateBlocksTexture(graphics: Phaser.GameObjects.Graphics){
 
   graphics.clear()
 
@@ -82,8 +83,24 @@ export function generateThornesTexture(graphics: Phaser.GameObjects.Graphics){
   for(let i = 0; i < 8; i++){
     graphics.lineTo(x+=5, i%2==0?0:15)
   }
-    graphics.stroke()
+  graphics.stroke()
   graphics.generateTexture('thorne', 52, 17)
+  graphics.clear()
+}
+
+export function generateBlockThornsTextures(graphics: Phaser.GameObjects.Graphics){
+  graphics.clear()
+
+  graphics.lineStyle(2, 0xffffff)
+  graphics.strokeRect(1, 1, 100, 50) //100*50
+  graphics.lineStyle(2, 0xffffff)
+  let x = 1.5
+  graphics.moveTo(x, 52)
+  for(let i = 0; i < 25; i++){
+    graphics.lineTo(x+=5, i%2==0?60:52)
+  }
+  graphics.stroke()
+  graphics.generateTexture('blockThorne', 102, 67)
   graphics.clear()
 }
 

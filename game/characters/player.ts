@@ -77,6 +77,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
   }
 
   thorneDamage(){
+    
     if(this.canDamage){
       Sound.hit.play()
       this.canDamage = false
@@ -89,6 +90,25 @@ export default class extends Phaser.Physics.Arcade.Sprite{
         this.inventory.setHealth(this.inventory.health-10)
         this.UILayer.setHealth(this.inventory.health)
         setTimeout(()=>{this.canDamage = true}, 500)
+      }
+    
+    }
+  }
+
+  blockThorneDamage(player: this, block: Phaser.Physics.Arcade.Sprite){
+    console.log()
+    if(this.canDamage && block.body.touching.down){
+      Sound.hit.play()
+      this.canDamage = false
+      //this.setVelocity(-200)
+      if(this.inventory.health < 11){
+        this.inventory.setHealth(0)
+        this.UILayer.setHealth(this.inventory.health)
+        this.die()
+      }else{
+        this.inventory.setHealth(this.inventory.health-10)
+        this.UILayer.setHealth(this.inventory.health)
+        this.canDamage = true
       }
     
     }
