@@ -92,15 +92,15 @@ export function generateBlockThornsTextures(graphics: Phaser.GameObjects.Graphic
   graphics.clear()
 
   graphics.lineStyle(2, 0xffffff)
-  graphics.strokeRect(1, 1, 100, 50) //100*50
+  graphics.strokeRect(1, 1, 100, 40) //100*50
   graphics.lineStyle(2, 0xffffff)
   let x = 1.5
-  graphics.moveTo(x, 52)
+  graphics.moveTo(x, 42)
   for(let i = 0; i < 25; i++){
-    graphics.lineTo(x+=5, i%2==0?60:52)
+    graphics.lineTo(x+=5, i%2==0?50:42)
   }
   graphics.stroke()
-  graphics.generateTexture('blockThorne', 102, 67)
+  graphics.generateTexture('blockThorne', 102, 52)
   graphics.clear()
 }
 

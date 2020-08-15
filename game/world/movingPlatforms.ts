@@ -11,7 +11,8 @@ export default class extends Phaser.Physics.Arcade.Group {
 
 
   scene2(){
-    this.limits.push(new Limits(this.create(150, 424, 'blockThorne'), 200, 200, 425, 300, 0, 50))
+    this.limits.push(new Limits(this.create(0, 0, 'blockThorne'), 190, 0, 300, 420, 0, 50))
+    this.limits.push(new Limits(this.create(0, 0, 'blockThorne'), 525, 600, 381, 0, 30, 0))
   }
 
   updateMovingPlatforms(){

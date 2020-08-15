@@ -21,9 +21,11 @@ export default class extends Phaser.Physics.Arcade.StaticGroup {
   }
 
   scene2(scene: Phaser.Scene){
-    this.create(150, 500, 'ground2')
+    this.create(170, 500, 'ground2')
     this.create(22, 474, 'block1')
     this.create(350, 424, 'block4')
+    this.create(900, 500, 'ground2')
+    this.create(800, 424, 'block4')
    
   }
 

@@ -46,7 +46,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
 
       if(inputY !== 0) {
         this.setVelocityY(inputY * deltatime)
-        if(!this.canDamage)this.setVelocity(this.body.velocity.y - 200)
+        if(!this.canDamage)this.setVelocity(this.body.velocity.y - 300)
         Sound.jump.play()
       }
 

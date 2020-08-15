@@ -46,6 +46,7 @@ export default class extends Phaser.Scene {
 
     this.player = new Player(this, 100, 100, 'player')
     this.player.initPhysics(this.physics)
+    this.cameras.main.startFollow(this.player);
 
 
     this.physics.add.collider(this.player, this.platforms) //platforms collision
@@ -54,7 +55,6 @@ export default class extends Phaser.Scene {
     })
     this.physics.add.overlap(this.player, this.coins, this.onCoinTake, undefined, this) //coins collision
 
-    this.cameras.main.startFollow(this.player);
 
   }
 
@@ -80,7 +80,7 @@ export default class extends Phaser.Scene {
         coin.destroy()
         })
     }
-}
+  }
 
 
 
