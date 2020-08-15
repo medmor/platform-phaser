@@ -35,6 +35,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
     physics.add.existing(this)
     this.setCollideWorldBounds(true)
     this.setBounce(0.2)
+    this.setGravity(0, 500)
 
   }
 
