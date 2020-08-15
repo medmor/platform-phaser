@@ -27,6 +27,11 @@ export default class extends Phaser.Physics.Arcade.StaticGroup {
     this.create(600, 300, 'coin')
     this.create(700, 250, 'coin')
     this.create(800, 300, 'coin')
+    this.create(1005, 300, 'coin')
+    this.create(1200, 300, 'coin')
+    this.create(1480, 450, 'coin')
+    this.create(1580, 450, 'coin')
+    this.create(1680, 450, 'coin')
   }
 
   addTween(scene: Phaser.Scene){
