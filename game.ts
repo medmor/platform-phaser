@@ -17,7 +17,7 @@ const config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    scene: [ Intro, Scene1, Scene2, UIScene ],
+    scene: [ Intro, Scene2, UIScene ],
     parent: "game",
     physics: {
         default: 'arcade',
