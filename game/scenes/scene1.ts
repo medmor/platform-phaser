@@ -28,7 +28,7 @@ export default class extends Phaser.Scene {
     this.lastTime = this.time.now
     this.cameras.main.setBounds(0, 0, 1920, 600);
     this.physics.world.setBounds(0, 0, 1920, 600, true, true, false, false);
-    this.game.scene.start('ui')
+    (this.scene.get('ui') as any).togglePlayerInventory()
   }
 
   preload(){

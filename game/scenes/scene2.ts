@@ -16,6 +16,7 @@ export default class extends Phaser.Scene {
   inputs: Inputs
   coins: Coins
   thornes: Thornes
+  door: Phaser.Geom.Rectangle
 
   constructor(){
     super('scene2')
@@ -25,7 +26,6 @@ export default class extends Phaser.Scene {
     this.lastTime = this.time.now
     this.cameras.main.setBounds(0, 0, 1920, 600);
     this.physics.world.setBounds(0, 0, 1920, 600, true, true, false, false);
-    this.game.scene.start('ui')    
   }
 
   preload(){

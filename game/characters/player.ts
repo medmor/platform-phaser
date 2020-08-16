@@ -28,7 +28,6 @@ export default class extends Phaser.Physics.Arcade.Sprite{
 
     this.inventory = new PlayerInventory(scene)
     this.UILayer = <UI> scene.scene.get('ui')
-    this.UILayer.togglePlayerInventory()
   }
 
   initPhysics(physics: Phaser.Physics.Arcade.ArcadePhysics){

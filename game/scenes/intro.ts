@@ -20,10 +20,11 @@ export default class extends Phaser.Scene {
   preload(){
     Sound.load()
     generateGameTextures(this.graphics)
+    this.game.scene.start('ui')
   }
 
   create(){
-    //this.scene.start('scene2')
+    (this.scene.get('ui') as any).togglePlayerInventory()
     this.loadingText.setInteractive()
     this.loadingText.setText('Press enter to play')
     this.input.on('gameobjectdown',(p, go)=>{

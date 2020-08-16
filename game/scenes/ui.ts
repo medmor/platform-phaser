@@ -1,10 +1,9 @@
 
 const textStyle = {fontSize:'30px',color:'#ffffff',fontFamily: 'Arial'}
 
-
 export default class extends Phaser.Scene {
 
-  playerInventory: Phaser.GameObjects.Container
+  playerInventory: Phaser.GameObjects.Group
   coinsImage: Phaser.GameObjects.Image
   coinsText: Phaser.GameObjects.Text
 
@@ -28,13 +27,12 @@ export default class extends Phaser.Scene {
     this.healthBarBackground = this.add.rectangle(680, 50, 200, 30, 0xff0000)
     this.healthBarForground = this.add.rectangle(680, 50, 200, 30, 0xffffff)
 
-    this.playerInventory = this.add.container()
-    this.playerInventory.add([this.coinsImage, this.coinsText, this.healthText, this.healthBarBackground, this.healthBarForground])
-    this.playerInventory.visible = false
+    this.playerInventory = this.add.group()
+    this.playerInventory.addMultiple([this.coinsImage, this.coinsText, this.healthText, this.healthBarBackground, this.healthBarForground])
   }
 
   togglePlayerInventory(){
-    this.playerInventory.visible = !this.playerInventory.visible
+    this.playerInventory.toggleVisible()
   }
 
   setCoins(value: string){
