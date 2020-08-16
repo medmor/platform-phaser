@@ -25,7 +25,6 @@ export default class extends Phaser.Scene {
 
   create(){
     (this.scene.get('ui') as any).togglePlayerInventory()
-    this.add.image(100,100,'heart')
     this.loadingText.setInteractive()
     this.loadingText.setText('Press enter to play')
     this.input.on('gameobjectdown',(p, go)=>{

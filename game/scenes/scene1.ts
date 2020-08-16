@@ -18,8 +18,6 @@ export default class extends Phaser.Scene {
 
   lastTime = 0
 
-
-
   constructor(){
     super('scene1')
   }
