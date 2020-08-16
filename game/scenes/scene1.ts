@@ -39,12 +39,19 @@ export default class extends Phaser.Scene {
     this.inputs = new Inputs(this)
 
     this.platforms = new Platforms(this.physics.world, this)
+    this.platforms.scene1()
+
     this.thornes = new Thornes(this.physics.world, this)
+    this.thornes.scene1()
+
     this.coins = new Coins(this.physics.world, this)
+    this.coins.scene1()
+    this.coins.addTween(this)
+
     this.door = this.add.image(1800, 424, 'door').getBounds()
 
 
-    this.player = new Player(this, 100, 100, 'player')
+    this.player = new Player(this, 50, 300, 'player')
     this.player.initPhysics(this.physics)
     this.cameras.main.startFollow(this.player);
 
@@ -53,7 +60,7 @@ export default class extends Phaser.Scene {
     this.physics.add.collider(this.player, this.thornes,()=>{ //thornes collision
       this.player.thorneDamage()
     })
-    this.physics.add.overlap(this.player, this.coins, this.onCoinTake, undefined, this) //coins collision
+    //this.physics.add.overlap(this.player, this.coins, this.onCoinTake, undefined, this) //coins collision
 
 
   }
@@ -65,12 +72,14 @@ export default class extends Phaser.Scene {
       this.scene.start('scene2')
     }
 
+    const coin = this.coins.checkOverllap(this.player)
+    if(coin) this.onCoinTake(coin)
 
 
     this.lastTime = this.time.now
   }
 
-  onCoinTake(player, coin){
+  onCoinTake(coin){
     this.player.body.touching.down = false
     if(coin.active) {
       coin.active = false

@@ -43,12 +43,13 @@ export default class extends Phaser.Scene {
 
     this.coins = new Coins(this.physics.world, this)
     this.coins.scene2()
+    this.coins.addTween(this)
 
     this.door = this.add.image(1800, 424, 'door').getBounds()
 
     this.inputs = new Inputs(this)
 
-    this.player = new Player(this, 1200, 100, 'player')
+    this.player = new Player(this, 50, 300, 'player')
     this.player.initPhysics(this.physics)
     this.cameras.main.startFollow(this.player);
 
@@ -69,7 +70,7 @@ export default class extends Phaser.Scene {
     if(coin) this.onCoinTake(coin)
 
     if(this.door.contains(this.player.x, this.player.y)){
-      this.scene.start('intro')
+      this.scene.start('win')
     }
 
     this.lastTime = this.time.now

@@ -3,21 +3,19 @@ export default class extends Phaser.Scene {
 
 
   lastTime = 0
+  winText: Phaser.GameObjects.Text = null
 
   constructor(){
-    super('scene2')
+    super('win')
   }
 
-  init(){
-    console.log('init')
-  }
+  init(){ }
 
-  preload(){
-    console.log('preload')
-  }
+  preload(){ }
 
   create(){
-    console.log('create')
+    this.winText = this.add.text(400, 300, 'You win', {fontSize:'80px',color:'#ff0000',fontFamily: 'Arial'})
+    .setOrigin(.5)
   }
 
   update(elapsedTime){

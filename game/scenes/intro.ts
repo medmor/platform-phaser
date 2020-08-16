@@ -23,14 +23,14 @@ export default class extends Phaser.Scene {
   }
 
   create(){
-    this.scene.start('scene2')
+    //this.scene.start('scene2')
     this.loadingText.setInteractive()
     this.loadingText.setText('Press enter to play')
     this.input.on('gameobjectdown',(p, go)=>{
-      this.scene.start('scene2')
+      this.scene.start('scene1')
     });
     this.input.keyboard.on('keydown', function (event) {
-        if(event.key === "Enter") this.scene.start('scene2')
+        if(event.key === "Enter") this.scene.start('scene1')
     }, this);
   }
 
