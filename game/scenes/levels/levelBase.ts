@@ -1,10 +1,10 @@
-import Player from "../characters/player"
-import Platforms from "../world/platforms"
-import MovingPlatforms from '../world/movingPlatforms'
-import Thornes from '../world/thornes'
-import Coins from '../world/coins'
-import Inputs from "../utils/inputs"
-import Sound from "../utils/sound"
+import Player from "../../characters/player"
+import Platforms from "../../world/platforms"
+import MovingPlatforms from '../../world/movingPlatforms'
+import Thornes from '../../world/thornes'
+import Coins from '../../world/coins'
+import Inputs from "../../utils/inputs"
+import Sound from "../../utils/sound"
 
 //import {onCoinTake} from './sharedFunctions'
 

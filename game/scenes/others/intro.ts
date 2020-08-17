@@ -1,5 +1,5 @@
-import { generateGameTextures } from "../utils/graphicHelpers"
-import Sound from "../utils/sound"
+import { generateGameTextures } from "../../utils/graphicHelpers"
+import Sound from "../../utils/sound"
 
 export default class extends Phaser.Scene {
 

@@ -1,10 +1,10 @@
 import * as Phaser from 'phaser'
 
-import Intro from './game/scenes/intro'
-import Scene1 from './game/scenes/scene1'
-import Scene2 from './game/scenes/scene2'
-import UIScene from './game/scenes/ui'
-import winScene from './game/scenes/win'
+import Intro from './game/scenes/others/intro'
+import Level1 from './game/scenes/levels/level1'
+import Level2 from './game/scenes/levels/level2'
+import UIScene from './game/scenes/others/ui'
+import winScene from './game/scenes/others/win'
 
 export default class extends Phaser.Game {
 
@@ -18,7 +18,7 @@ const config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    scene: [ Intro, Scene1, Scene2, UIScene, winScene ],
+    scene: [ Intro, Level1, Level2, UIScene, winScene ],
     parent: "game",
     physics: {
         default: 'arcade',
