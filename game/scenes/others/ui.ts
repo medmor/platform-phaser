@@ -46,6 +46,10 @@ export default class extends Phaser.Scene {
     this.coinsText.setText(value)
   }
 
+  setLives(value: string){
+    this.livesText.setText(value)
+  }
+
   setHealth(value: number){
     this.healthText.setText(value.toString())
     if(value <= 0) this.healthBarForground.width = 0

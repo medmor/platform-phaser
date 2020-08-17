@@ -1,6 +1,6 @@
 import Sound from "../utils/sound"
 import PlayerInventory from './playerInventory'
-import UI from '../scenes/ui'
+import UI from '../scenes/others/ui'
 
 
 export default class extends Phaser.Physics.Arcade.Sprite{
@@ -66,6 +66,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
     this.y = this.startY
     this.inventory.setHealth(100)
     this.UILayer.setHealth(100)
+    this.UILayer.setLives(this.inventory.lives--)
     this.canDamage = true
   }
 
