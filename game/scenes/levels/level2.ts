@@ -1,14 +1,18 @@
-import levelBase from "./levelBase"
+import LevelBase from "./levelBase"
+import PlayerInventory from "../../characters/playerInventory"
 
-export default class extends levelBase {
+export default class extends LevelBase {
 
+  playerInventoryBase: PlayerInventory
 
   constructor(){
     super('scene2')
   }
 
-  init(){
+  init(data){
     super.init()
+    console.log(data)
+    this.playerInventoryBase = data.playerInventory
   }
 
   preload(){
@@ -16,6 +20,9 @@ export default class extends levelBase {
 
   create(){
     super.create()
+
+    this.player.inventory = this.playerInventoryBase
+
     this.platforms.scene2(this)
 
     this.movingPlatforms.scene2()

@@ -67,6 +67,8 @@ export default class extends Phaser.Scene {
     const coin = this.coins.checkOverllap(this.player)
     if(coin) this.onCoinTake(coin)
 
+    if(this.player.inventory.lives <= 0) this.scene.start('gameOver')
+
     this.lastTime = this.time.now
   }
 

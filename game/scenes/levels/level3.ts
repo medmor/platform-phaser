@@ -1,6 +1,6 @@
-import BaseLevel from './levelBase'
+import LevelBase from './levelBase'
 
-export default class extends BaseLevel {
+export default class extends LevelBase {
 
   constructor(){
     super('scene3')

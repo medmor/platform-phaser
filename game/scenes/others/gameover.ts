@@ -1,29 +1,15 @@
 
 export default class extends Phaser.Scene {
 
-
-  lastTime = 0
+  gameOverText: Phaser.GameObjects.Text = null
 
   constructor(){
-    super('scene2')
-  }
-
-  init(){
-    console.log('init')
-  }
-
-  preload(){
-    console.log('preload')
+    super('gameOver')
   }
 
   create(){
-    console.log('create')
-  }
-
-  update(elapsedTime){
-
-
-    this.lastTime = this.time.now
+    this.gameOverText = this.add.text(400, 300, 'Game Over', {fontSize:'80px',color:'#ff0000',fontFamily: 'Arial'})
+    .setOrigin(.5)
   }
 
 }

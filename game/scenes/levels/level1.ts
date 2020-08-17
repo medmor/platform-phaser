@@ -1,6 +1,6 @@
-import Level from './levelBase'
+import LevelBase from './levelBase'
 
-export default class extends Level {
+export default class extends LevelBase {
 
   constructor(){
     super('scene1')
@@ -32,7 +32,7 @@ export default class extends Level {
   update(elapsedTime){
     super.update(elapsedTime)
     if(this.door.contains(this.player.x, this.player.y)){
-      this.scene.start('scene2')
+      this.scene.start('scene2', {playerInventory: this.player.inventory})
     }
   }
 
