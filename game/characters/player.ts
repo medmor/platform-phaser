@@ -56,8 +56,8 @@ export default class extends Phaser.Physics.Arcade.Sprite{
       this.setVelocityX(this.body.velocity.x * .985)
     }
 
-    if(this.y > 700){
-      this.reset()
+    if(this.y > 600){
+      this.die()
     }
   }
 
@@ -66,7 +66,6 @@ export default class extends Phaser.Physics.Arcade.Sprite{
     this.y = this.startY
     this.inventory.setHealth(100)
     this.UILayer.setHealth(100)
-    this.UILayer.setLives(this.inventory.lives--)
     this.canDamage = true
   }
 
@@ -133,6 +132,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
         ()=> {
           emit.stop()
           setTimeout(()=>{
+            this.UILayer.setLives((--this.inventory.lives).toString())
             this.reset()
             this.visible = true
           },500)
