@@ -36,18 +36,3 @@ export default class extends Phaser.Physics.Arcade.StaticGroup {
 
   }
 }
-
-class MovingPlatform{
-  constructor(
-    public target: Phaser.Physics.Arcade.Sprite,
-    public maxX: number,
-    public minX: number,
-    public maxY: number,
-    public minY: number)
-    {
-      this.target.setX(this.maxX)
-      this.target.setY(this.maxY)
-      
-      this.target.setY(200)
-    }
-}
