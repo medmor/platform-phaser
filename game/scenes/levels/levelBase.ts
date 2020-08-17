@@ -48,6 +48,7 @@ export default class extends Phaser.Scene {
     this.player = new Player(this, 50, 300, 'player')
     this.player.initPhysics(this.physics)
     this.cameras.main.startFollow(this.player);
+    this.player.addJumpTween(this)
 
 
     this.physics.add.collider(this.player, this.platforms)

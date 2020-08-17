@@ -9,6 +9,9 @@ export default class extends Phaser.Physics.Arcade.Sprite{
   startY: number;
   emitter: Phaser.GameObjects.Particles.ParticleEmitterManager
   inventory : PlayerInventory
+  jumpTweens = { start: Phaser.Tweens.Tween, middle: Phaser.Tweens.Tween, end: Phaser.Tweens.Tween }
+
+
   UILayer: UI
 
   canDamage = true
@@ -44,9 +47,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
       if(inputX !== 0) this.setVelocityX(inputX * deltatime )
 
       if(inputY !== 0) {
-        this.setVelocityY(inputY * deltatime)
-        if(!this.canDamage)this.setVelocity(this.body.velocity.y - 300)
-        Sound.jump.play()
+        this.jumpTweens.start.play()
       }
 
       this.setVelocityX(this.body.velocity.x * .89)
@@ -139,6 +140,19 @@ export default class extends Phaser.Physics.Arcade.Sprite{
         200)
 
     }
+  }
+
+  addJumpTween(scene: Phaser.Scene){
+    this.jumpTweens.start = scene.add.tween({targets: this, scaleY: .6, duration: 100})
+    this.jumpTweens.middle = scene.add.tween({targets: this, scaleY: 1.1, scaleX: .9, duration: 400, yoyo: true, ease: 'Cubic.easeOut'})
+
+    this.jumpTweens.start.on('complete', ()=>{
+      this.jumpTweens.middle.play()
+      this.setVelocityY(-300)
+      if(!this.canDamage)this.setVelocity(this.body.velocity.y - 300)
+      Sound.jump.play()
+    })
+
   }
 
 }
