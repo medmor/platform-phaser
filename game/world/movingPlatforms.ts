@@ -7,12 +7,14 @@ export default class extends Phaser.Physics.Arcade.Group {
 
   constructor(world: Phaser.Physics.Arcade.World, scene: Phaser.Scene){
     super(world, scene)
+    
   }
 
 
   scene2(){
     this.limits.push(new Limits(this.create(0, 0, 'blockThorne'), 190, 0, 300, 420, 0, 50))
     this.limits.push(new Limits(this.create(0, 0, 'blockThorne'), 525, 600, 381, 0, 30, 0))
+    this.getChildren()[0].setImmovable(true)
   }
 
   updateMovingPlatforms(){

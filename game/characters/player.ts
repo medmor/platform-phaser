@@ -35,7 +35,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
     this.setCollideWorldBounds(true)
     this.setBounce(0.2)
     this.setGravity(0, 500)
-
+    //this.setCircle(25)
   }
 
   move(inputX, inputY, deltatime: number){
@@ -56,7 +56,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
       this.setVelocityX(this.body.velocity.x * .985)
     }
 
-    if(this.y > 600){
+    if(this.y > 550){
       this.die()
     }
   }
@@ -95,7 +95,6 @@ export default class extends Phaser.Physics.Arcade.Sprite{
   }
 
   blockThorneDamage(player: this, block: Phaser.Physics.Arcade.Sprite){
-    console.log()
     if(this.canDamage && block.body.touching.down){
       Sound.hit.play()
       this.canDamage = false
