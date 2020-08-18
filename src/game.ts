@@ -1,4 +1,4 @@
-import * as Phaser from 'phaser'
+import  'phaser'
 
 import Intro from './game/scenes/others/intro'
 import Level1 from './game/scenes/levels/level1'

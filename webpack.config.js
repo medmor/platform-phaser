@@ -1,7 +1,9 @@
 const path = require('path');
 
 module.exports = {
+
     entry: './src/index.ts',
+
     module: {
         rules: [
             {
@@ -10,11 +12,21 @@ module.exports = {
             },
         ],
     },
+
     resolve: {
         extensions: ['.ts', '.js'],
     },
+
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'docs'),
     },
+
+    externals: {
+        phaser: {
+            root: "phaser",
+            commonjs2: "phaser",
+        },
+    },
+
 };
