@@ -1,4 +1,4 @@
-import Sound from "../utils/sound"
+//import Sound from "../utils/sound"
 import PlayerInventory from './playerInventory'
 import UI from '../scenes/others/ui'
 
@@ -54,7 +54,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
 
     }else{
 
-      this.setVelocityX(this.body.velocity.x * .985)
+      this.setVelocityX(this.body.velocity.x * .99)
     }
 
     if(this.y > 550){
@@ -71,7 +71,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
   }
 
   onCoinTake(){
-    Sound.coin.play()
+    //Sound.coin.play()
     this.inventory.setCoins(this.inventory.coins+1)
     this.UILayer.setCoins(this.inventory.coins.toString())
   }
@@ -79,7 +79,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
   thorneDamage(){
     
     if(this.canDamage){
-      Sound.hit.play()
+      //Sound.hit.play()
       this.canDamage = false
       this.setVelocity(-200)
       if(this.inventory.health < 11){
@@ -97,7 +97,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
 
   blockThorneDamage(player: this, block: Phaser.Physics.Arcade.Sprite){
     if(this.canDamage && block.body.touching.down){
-      Sound.hit.play()
+      //Sound.hit.play()
       this.canDamage = false
       if(this.inventory.health < 11){
         this.inventory.setHealth(0)
@@ -114,7 +114,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
 
   die(){
     if(this.visible){
-      Sound.hit.play()
+      //Sound.hit.play()
       this.visible = false
       this.inventory.setHealth(0)
       this.UILayer.setHealth(this.inventory.health)
@@ -149,7 +149,7 @@ export default class extends Phaser.Physics.Arcade.Sprite{
       this.jumpTweens.middle.play()
       this.setVelocityY(-300)
       if(!this.canDamage)this.setVelocity(this.body.velocity.y - 300)
-      Sound.jump.play()
+      //Sound.jump.play()
     })
 
   }

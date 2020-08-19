@@ -4,7 +4,7 @@ import MovingPlatforms from '../../world/movingPlatforms'
 import Thornes from '../../world/thornes'
 import Coins from '../../world/coins'
 import Inputs from "../../utils/inputs"
-import Sound from "../../utils/sound"
+//import Sound from "../../utils/sound"
 
 //import {onCoinTake} from './sharedFunctions'
 
@@ -16,7 +16,7 @@ export default class extends Phaser.Scene {
   thornes: Thornes
   coins: Coins
   inputs: Inputs
-  soundManager = Sound
+  //soundManager = Sound
   door: Phaser.Geom.Rectangle
 
   lastTime = 0
