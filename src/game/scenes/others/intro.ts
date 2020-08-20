@@ -21,7 +21,7 @@ export default class extends Phaser.Scene {
         //Sound.load()
         generateGameTextures(this.graphics)
         this.game.scene.start('ui')
-        this.load.audio('music', './docs/sounds/music.mp3')
+        this.load.audio('coin', 'https://raw.githubusercontent.com/medmor/platform-phaser/local/docs/sounds/coin.wav')
     }
 
     create() {
@@ -34,6 +34,7 @@ export default class extends Phaser.Scene {
         this.input.keyboard.on('keydown', function (event: KeyboardEvent) {
             if (event.key === "Enter") this.scene.start('scene1')
         }, this);
+        this.sound.play('coin')
     }
 
 

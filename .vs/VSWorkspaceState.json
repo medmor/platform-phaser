@@ -1,4 +1,10 @@
 {
-  "ExpandedNodes": [],
+  "ExpandedNodes": [
+    "",
+    "\\docs",
+    "\\src",
+    "\\src\\game"
+  ],
+  "SelectedNode": "\\webpack.config.js",
   "PreviewInSolutionExplorer": false
 }
