@@ -4,9 +4,7 @@ import MovingPlatforms from '../../world/movingPlatforms'
 import Thornes from '../../world/thornes'
 import Coins from '../../world/coins'
 import Inputs from "../../utils/inputs"
-//import Sound from "../../utils/sound"
 
-//import {onCoinTake} from './sharedFunctions'
 
 export default class extends Phaser.Scene {
 
@@ -16,7 +14,6 @@ export default class extends Phaser.Scene {
   thornes: Thornes
   coins: Coins
   inputs: Inputs
-  //soundManager = Sound
   door: Phaser.Geom.Rectangle
 
   lastTime = 0
@@ -74,8 +71,8 @@ export default class extends Phaser.Scene {
   }
 
   onCoinTake(coin: any){
-    this.player.body.touching.down = false
-    if(coin.active) {
+      if (coin.active) {
+        this.sound.play('coin')
       coin.active = false
       this.player.onCoinTake()
       this.tweens.add({targets: coin, y: "-=200", duration: 500, ease: 'Linear'})

@@ -71,7 +71,6 @@ export default class extends Phaser.Physics.Arcade.Sprite{
   }
 
   onCoinTake(){
-    //Sound.coin.play()
     this.inventory.setCoins(this.inventory.coins+1)
     this.UILayer.setCoins(this.inventory.coins.toString())
   }
