@@ -1,5 +1,4 @@
 import { generateGameTextures } from "../../utils/graphicHelpers"
-import Sound from "../../utils/sound"
 
 export default class extends Phaser.Scene {
 
@@ -18,11 +17,12 @@ export default class extends Phaser.Scene {
     }
 
     preload() {
-        //Sound.load()
         generateGameTextures(this.graphics)
         this.game.scene.start('ui')
         this.load.audio('music', 'https://raw.githubusercontent.com/medmor/platform-phaser/local/docs/sounds/music1.mp3')
         this.load.audio('coin', 'https://raw.githubusercontent.com/medmor/platform-phaser/local/docs/sounds/coin.wav')
+        this.load.audio('coin', 'https://raw.githubusercontent.com/medmor/platform-phaser/local/docs/sounds/jump.wav')
+        this.load.audio('coin', 'https://raw.githubusercontent.com/medmor/platform-phaser/local/docs/sounds/hit.wav')
     }
 
     create() {
@@ -37,6 +37,4 @@ export default class extends Phaser.Scene {
         }, this);
 
     }
-
-
 }

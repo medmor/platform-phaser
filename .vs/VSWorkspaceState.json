@@ -3,8 +3,13 @@
     "",
     "\\docs",
     "\\src",
-    "\\src\\game"
+    "\\src\\game",
+    "\\src\\game\\characters",
+    "\\src\\game\\scenes",
+    "\\src\\game\\scenes\\levels",
+    "\\src\\game\\scenes\\others",
+    "\\src\\game\\world"
   ],
-  "SelectedNode": "\\webpack.config.js",
+  "SelectedNode": "\\src\\game\\scenes\\others\\intro.ts",
   "PreviewInSolutionExplorer": false
 }

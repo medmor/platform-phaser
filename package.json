@@ -7,11 +7,9 @@
     "build": "npm run webpack -- --mode production"
   },
   "dependencies": {
-    "howler": "^2.2.0",
     "phaser": "3.24.1"
   },
   "devDependencies": {
-    "@types/howler": "^2.2.1",
     "ts-loader": "^8.0.2",
     "typescript": "^3.9.7",
     "webpack": "^4.44.1",

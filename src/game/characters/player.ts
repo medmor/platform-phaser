@@ -1,4 +1,3 @@
-//import Sound from "../utils/sound"
 import PlayerInventory from './playerInventory'
 import UI from '../scenes/others/ui'
 
@@ -76,7 +75,6 @@ export default class extends Phaser.Physics.Arcade.Sprite{
   }
 
   thorneDamage(){
-    
     if(this.canDamage){
       //Sound.hit.play()
       this.canDamage = false
