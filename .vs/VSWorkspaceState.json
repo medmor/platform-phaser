@@ -7,8 +7,7 @@
     "\\src\\game\\characters",
     "\\src\\game\\scenes",
     "\\src\\game\\scenes\\levels",
-    "\\src\\game\\scenes\\others",
-    "\\src\\game\\world"
+    "\\src\\game\\scenes\\others"
   ],
   "SelectedNode": "\\src\\game\\scenes\\others\\intro.ts",
   "PreviewInSolutionExplorer": false

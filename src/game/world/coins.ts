@@ -15,7 +15,7 @@ export default class extends Phaser.Physics.Arcade.StaticGroup {
     this.create(690, 300, 'coin')
     this.create(790, 350, 'coin')
     this.create(890, 400, 'coin')
-    this.createMultiple({key:'coin', setXY:{x: 1000, y: 400, stepX: 100}, quantity: 7})
+    this.createMultiple({key:'coin', setXY:{x: 1000, y: 450, stepX: 100}, quantity: 7})
   }
 
   scene2(){
@@ -32,7 +32,14 @@ export default class extends Phaser.Physics.Arcade.StaticGroup {
     this.create(1480, 450, 'coin')
     this.create(1580, 450, 'coin')
     this.create(1680, 450, 'coin')
-  }
+    }
+
+    scene3() {
+        this.createMultiple({ key: 'coin', setXY: { x: 150, y: 200, stepX: 100 }, quantity: 4 })
+        this.create(700, 75, 'coin')
+        this.createMultiple({ key: 'coin', setXY: { x: 1100, y: 300, stepX: 100 }, quantity: 3 })
+        this.createMultiple({ key: 'coin', setXY: { x: 1890, y: 200, stepY: 75 }, quantity: 4 })
+    }
 
   addTween(scene: Phaser.Scene){
     scene.tweens.add({

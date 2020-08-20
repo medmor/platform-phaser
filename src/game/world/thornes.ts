@@ -16,6 +16,10 @@ export default class extends Phaser.Physics.Arcade.StaticGroup {
   scene2(){
     this.create(930, 492, 'thorne')
     this.create(1080, 492, 'thorne')
-  }
+    }
+
+    scene3() {
+        this.create(705, 242, 'thorne')
+    }
 
 }

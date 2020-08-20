@@ -3,12 +3,13 @@ import LevelBase from './levelBase'
 export default class extends LevelBase {
 
     constructor() {
-        super('scene1')
+        super('level1')
     }
 
     init() {
         super.init(undefined);
         (this.scene.get('ui') as any).togglePlayerInventory()
+        //this.scene.start('level2')
     }
 
     preload() {
@@ -16,7 +17,7 @@ export default class extends LevelBase {
 
     create() {
         super.create()
-        this.sound.play('music')
+        //this.sound.play('music')
 
         this.platforms.scene1()
 
@@ -32,7 +33,7 @@ export default class extends LevelBase {
     update(elapsedTime: number) {
         super.update(elapsedTime)
         if (this.door.contains(this.player.x, this.player.y)) {
-            this.scene.start('scene2', { playerInventory: this.player.inventory })
+            this.scene.start('level2', { playerInventory: this.player.inventory })
         }
     }
 

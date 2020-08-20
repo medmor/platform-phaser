@@ -1,45 +1,39 @@
-import LevelBase from "./levelBase"
-import PlayerInventory from "../../characters/playerInventory"
+import LevelBase from './levelBase'
 
 export default class extends LevelBase {
 
-  playerInventoryBase: PlayerInventory
-
-  constructor(){
-    super('scene2')
-  }
-
-    init(data:any){
-    super.init(undefined)
-    this.playerInventoryBase = data.playerInventory
-  }
-
-  preload(){
-  }
-
-  create(){
-    super.create()
-
-    this.player.inventory = this.playerInventoryBase
-
-    this.platforms.scene2(this)
-
-    this.movingPlatforms.scene2()
-
-    this.thornes.scene2()
-
-    this.coins.scene2()
-    this.coins.addTween(this)
-
-    this.door = this.add.image(1800, 424, 'door').getBounds()
-
-  }
-
-  update(elapsedTime: number){
-    super.update(elapsedTime)
-    if(this.door.contains(this.player.x, this.player.y)){
-      this.scene.start('win')
+    constructor() {
+        super('level2')
     }
-  }
+
+    init() {
+        super.init(undefined);
+    }
+
+    preload() { }
+
+    create() {
+        super.create()
+        this.player.setY(this.player.startY = 200)
+        //this.player.setX(this.player.startX = 1000)
+
+        this.platforms.scene3()
+
+        this.movingPlatforms.scene3()
+
+        this.thornes.scene3()
+
+        this.coins.scene3()
+        this.coins.addTween(this)
+
+        this.door = this.add.image(1800, 474, 'door').getBounds()
+    }
+
+    update(elapsedTime: number) {
+        super.update(elapsedTime)
+        if (this.door.contains(this.player.x, this.player.y)) {
+            this.scene.start('level3', { playerInventory: this.player.inventory })
+        }
+    }
 
 }
