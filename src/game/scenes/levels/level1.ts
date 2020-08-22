@@ -17,7 +17,7 @@ export default class extends LevelBase {
 
     create() {
         super.create()
-        //this.sound.play('music')
+        this.sound.play('music')
 
         this.platforms.scene1()
 

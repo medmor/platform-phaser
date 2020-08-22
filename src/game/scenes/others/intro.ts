@@ -19,7 +19,7 @@ export default class extends Phaser.Scene {
     preload() {
         generateGameTextures(this.graphics)
         this.game.scene.start('ui')
-        //this.load.audio('music', 'https://raw.githubusercontent.com/medmor/platform-phaser/local/docs/sounds/music1.mp3')
+        this.load.audio('music', 'https://raw.githubusercontent.com/medmor/platform-phaser/local/docs/sounds/music1.mp3')
         this.load.audio('coin', 'https://raw.githubusercontent.com/medmor/platform-phaser/local/docs/sounds/coin.wav')
         this.load.audio('jump', 'https://raw.githubusercontent.com/medmor/platform-phaser/local/docs/sounds/jump.wav')
         this.load.audio('hit', 'https://raw.githubusercontent.com/medmor/platform-phaser/local/docs/sounds/hit.mp3')
